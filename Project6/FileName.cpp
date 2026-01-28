@@ -5,7 +5,6 @@
 #include <fstream>
 using namespace std;
 
-
 mutex m;
 
 void saveFile()
@@ -43,9 +42,13 @@ void readFile()
 }
 int main(   )
 {
-   
+	thread t1(saveFile);
+	Sleep(100);
+	thread t2(readFile);
 
+	t1.join();
 
+	t2.join();
 
 
 }
